@@ -331,6 +331,11 @@ func NewJar() http.CookieJar {
 	return jar
 }
 
+// Fail fails a test run manually.
+func (e *Expect) Fail(message string, args ...interface{}) {
+	e.config.Reporter.Errorf(message, args)
+}
+
 // Builder returns a copy of Expect instance with given builder attached to it.
 // Returned copy contains all previously attached builders plus a new one.
 // Builders are invoked from Request method, after constructing every new request.
